@@ -1,4 +1,4 @@
-
+// Optimized implementation of Bubble sort
 #include <stdbool.h>
 #include <stdio.h>
 
