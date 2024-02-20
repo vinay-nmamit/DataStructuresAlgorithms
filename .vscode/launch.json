@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/vinay kumar/Desktop/Infosys Finacle",
-      "program": "c:/Users/vinay kumar/Desktop/Infosys Finacle/build/Debug/outDebug",
+      "cwd": "d:/Infosys Finacle",
+      "program": "d:/Infosys Finacle/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
