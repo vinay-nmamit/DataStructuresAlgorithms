@@ -1,45 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void insertElement(int arr[], int n, int x, int pos) {
-    for (int i = n - 1; i >= pos; i--) {
-        arr[i + 1] = arr[i];
-    }
-    arr[pos] = x;
+int deleteElement(int arr[], int n, int key){
+    int pos = binarySearch(arr, 0, n - 1, key);
+
+    if(pos == -1)
+        cout << "element not found";
+        return n;
+    
+    for(int i = pos; i < n - 1; i++)
+        arr[i] = arr[i+1];
+    
+    return n - 1; 
 }
 
-int main() {
-    int size;
-    cout << "enter the size of array: ";
-    cin >> size;
-
-    int n;
-    cout << "enter size of elements: ";
-    cin >> n;
-
-    int arr[size];
-    cout << "enter the elements: ";
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
-
-    cout << "before insertion: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
-    cout << endl;
-    int x, pos;
-    cout << "Enter the element to be inserted: ";
-    cin >> x;
-
-    cout << "enter the position: ";
-    cin >> pos;
-
-    insertElement(arr, n, x, pos);
-    n++;
-
-    cout << "after insertion: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    return 0;
+int binarySearch(int arr[], int low, int high, int key){
+    if(high < low)
+        return -1;
+    int mid = (low + high) / 2;
+    if(key == arr[mid])
+        return mid;
+    if(key > arr[mid])
+        return binarySearch(arr, (mid+1), high, key);
+    return binarySearch(arr, low, (mid - 1), key);
 }
