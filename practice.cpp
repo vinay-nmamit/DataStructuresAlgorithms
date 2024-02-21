@@ -1,49 +1,45 @@
-#include <iostream>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
-class solution{
-public:
-    string reversewords(string s) {
-        int n = s.size();
-        stack<string> st;
-
-        int startIndex = 0;
-        for(int i = 0; i <= n; i++){
-            if(s[i] == ' ' || i ==  n){
-                string Substring = s.substr(startIndex, i - startIndex);
-
-                if(!Substring.empty()){
-                    st.push(Substring);
-                }
-                startIndex = i + 1;
-            }
-        }
-        string ans = "";
-        while(!st.empty()){
-            ans += st.top();
-            ans += " ";
-            st.pop();
-        }
-
-        if(!ans.empty() && ans.back() == ' '){
-            ans.pop_back();
-        }
-        return ans;
+void insertElement(int arr[], int n, int x, int pos) {
+    for (int i = n - 1; i >= pos; i--) {
+        arr[i + 1] = arr[i];
     }
-};
+    arr[pos] = x;
+}
 
 int main() {
-    solution sol; // Create an instance of the Solution class
+    int size;
+    cout << "enter the size of array: ";
+    cin >> size;
 
-    // Take user input
-    cout << "Enter a string: ";
-    string input;
-    getline(cin, input);
+    int n;
+    cout << "enter size of elements: ";
+    cin >> n;
 
-    // Call the reverseWords function and output the result
-    string result = sol.reversewords(input);
-    cout << "String with reversed words: " << result << endl;
+    int arr[size];
+    cout << "enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
+    cout << "before insertion: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+    int x, pos;
+    cout << "Enter the element to be inserted: ";
+    cin >> x;
+
+    cout << "enter the position: ";
+    cin >> pos;
+
+    insertElement(arr, n, x, pos);
+    n++;
+
+    cout << "after insertion: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     return 0;
 }
