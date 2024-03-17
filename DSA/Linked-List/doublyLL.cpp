@@ -78,7 +78,6 @@ void insertBefore(Node **next_node, int new_data) {
     }
 }
 
-
 // Insert after a given node
 void insertAfter(Node **prev_node, int new_data) {
     // Check if given prev_node pointer is null
@@ -96,5 +95,110 @@ void insertAfter(Node **prev_node, int new_data) {
     // Change the previous of new node's next node
     if (new_node->next != nullptr) {
         new_node->next->prev = new_node;
+    }
+}
+
+//as this is doubly linked list we can both display forward and backwards
+void displayForward(Node **head){
+    cout << "Linked list: ";
+    Node *current = *head;
+
+    while(current!= nullptr){
+        cout << current->data << " ";
+        current= current->next;
+    }
+    cout << endl;
+}
+
+void displaybackward(Node **tail){
+    cout << "Linked list: ";
+    Node* current = *tail;
+
+    while(current != nullptr){
+        cout<< current->data << " ";
+        current = current->prev;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = nullptr;
+    Node* tail = nullptr; // Keep track of the tail for efficient append operation
+
+    while (true) {
+        cout << "\nDoubly linked list operations :";
+        cout << "\n1. Insert at beginning";
+        cout << "\n2. Insert at the end";
+        cout << "\n3. Insert before a given Node";
+        cout << "\n4. Insert after a given Node";
+        cout << "\n5. Display forwards";
+        cout << "\n6. Display Backwards";
+        cout << "\n7. Exit the operation\n";
+
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                int data;
+                cout << "Enter the data to be inserted at the beginning: ";
+                cin >> data;
+                InsertAtHead(&head, data);
+                if (tail == nullptr) {
+                    tail = head;
+                }
+                break;
+            }
+            case 2: {
+                int data;
+                cout << "Enter the data to be inserted at the end: ";
+                cin >> data;
+                append(&head, data);
+                if (tail == nullptr) {
+                    tail = head;
+                }
+                else {
+                    while (tail->next != nullptr) {
+                        tail = tail->next;
+                    }
+                }
+                break;
+            }
+            case 3: {
+                int data;
+                cout << "Enter the data to be inserted before a given node: ";
+                cin >> data;
+                int position;
+                cout << "Enter the Node position: ";
+                cin >> position;
+                insertBefore(&head, data);
+                break;
+            }
+            case 4: {
+                int data, position;
+                cout << "Enter the data to be inserted after a given node: ";
+                cin >> data;
+                cout << "Enter the Node position: ";
+                cin >> position;
+                insertAfter(&head, data);
+                break;
+            }
+            case 5: {
+                displayForward(&head);
+                break;
+            }
+            case 6: {
+                displaybackward(&tail);
+                break;
+            }
+            case 7: {
+                return 0; // Exit the program
+            }
+            default: {
+                cout << "Invalid choice. Please enter a valid option.\n";
+                break;
+            }
+        }
     }
 }
