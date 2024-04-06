@@ -1,26 +1,34 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-string mergeLettersAlternatively(string word1, string word2){
-    string result = "";
-    int i = 0;
-    do{
-        if(i < word1.length()){
-            result += word1[i];
-        }
-        if(i < word2.length()){
-            result+= word2[i];
-        }
-        i++;
-    }while(i < word1.length() || i < word2.length());
-    return result;
-}
-
 int main(){
-    string w1, w2;
-    cin >> w1 >> w2;
+    int n, q;
+    cin >> n >> q;
 
-    cout << "Merged alternatively: ";
-    cout << mergeLettersAlternatively(w1, w2) << endl;
+    vector<vector<int>> arrays;
+
+    for(int i = 0; i < n; i++){
+        int size;
+        cin >> size;
+
+        vector<int> current_array;
+         for(int j = 0; i < size; j++){
+            int element;
+            cin >> element;
+            current_array.push_back(element);
+         }
+
+         arrays.push_back(current_array);
+
+         for(int i = 0; i < q; i++){
+            int array_index, element_index;
+            cin >> array_index >> element_index;
+
+            int value = arrays[array_index][element_index];
+
+            cout << value << endl;
+
+            return 0;
+         }
+    }
 }
