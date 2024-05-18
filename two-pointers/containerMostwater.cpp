@@ -27,6 +27,7 @@ int main(){
     cout << "enter the size: ";
     cin >> size;
     vector<int> height(size);
+    cout << "enter the height: ";
     for(int i = 0; i < size; i++){
         cin >> height[i];
     }
